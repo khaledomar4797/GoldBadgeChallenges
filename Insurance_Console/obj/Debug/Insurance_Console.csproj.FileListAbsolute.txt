@@ -1,0 +1,10 @@
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\bin\Debug\Insurance_Console.exe.config
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\bin\Debug\Insurance_Console.exe
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\bin\Debug\Insurance_Console.pdb
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\bin\Debug\Insurance_Repository.dll
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\bin\Debug\Insurance_Repository.pdb
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\obj\Debug\Insurance_Console.csprojAssemblyReference.cache
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\obj\Debug\Insurance_Console.csproj.CoreCompileInputs.cache
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\obj\Debug\Insurance_Console.csproj.CopyComplete
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\obj\Debug\Insurance_Console.exe
+C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Console\obj\Debug\Insurance_Console.pdb
