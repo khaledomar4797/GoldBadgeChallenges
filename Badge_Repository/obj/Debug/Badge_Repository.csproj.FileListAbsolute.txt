@@ -1,6 +1,0 @@
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\bin\Debug\Badge_Repository.dll
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\bin\Debug\Badge_Repository.pdb
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\obj\Debug\Badge_Repository.csprojAssemblyReference.cache
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\obj\Debug\Badge_Repository.csproj.CoreCompileInputs.cache
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\obj\Debug\Badge_Repository.dll
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Badge_Repository\obj\Debug\Badge_Repository.pdb

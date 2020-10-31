@@ -1,6 +1,0 @@
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\bin\Debug\Insurance_Repository.dll
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\bin\Debug\Insurance_Repository.pdb
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\obj\Debug\Insurance_Repository.csprojAssemblyReference.cache
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\obj\Debug\Insurance_Repository.csproj.CoreCompileInputs.cache
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\obj\Debug\Insurance_Repository.dll
-C:\ElevenFiftyProjects\DotNetProjects\GoldBadgeChallenges\Insurance_Repository\obj\Debug\Insurance_Repository.pdb
