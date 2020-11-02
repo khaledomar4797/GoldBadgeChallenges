@@ -49,10 +49,12 @@ namespace Insurance_Repository
 
             if(currentClaimItem != null)
             {
+                currentClaimItem.TypeOfClaim = claimItem.TypeOfClaim;
                 currentClaimItem.ClaimDescription = claimItem.ClaimDescription;
                 currentClaimItem.ClaimAmount = claimItem.ClaimAmount;
                 currentClaimItem.DateOfIncident = claimItem.DateOfIncident;
                 currentClaimItem.DateOfClaim = claimItem.DateOfClaim;
+                currentClaimItem.IsValid = claimItem.IsValid;
 
                 return true;
             }

@@ -22,7 +22,7 @@ namespace Insurance_Console
             Claim newClaim1 = new Claim("1", ClaimType.Car, "Car accident on 465.", 400.00m, new DateTime(2018, 4, 25), new DateTime(2018, 4, 27));
             Claim newClaim2 = new Claim("2", ClaimType.Home, "House fire in kitchen.", 4000.00m, new DateTime(2018, 4, 11), new DateTime(2018, 4, 12));
             Claim newClaim3 = new Claim("3", ClaimType.Theft, "Stolen pancakes", 4.00m, new DateTime(2018, 4, 27), new DateTime(2018, 6, 1));
-            
+
             _repo.AddItemToTheClaims(newClaim1);
             _repo.AddItemToTheClaims(newClaim2);
             _repo.AddItemToTheClaims(newClaim3);
@@ -42,7 +42,8 @@ namespace Insurance_Console
                     "1. See all claims\n" +
                     "2. Take care of next claim\n" +
                     "3. Enter a new claim\n" +
-                    "4. Exit");
+                    "4. Update a claim\n" +
+                    "5. Exit");
 
                 string input = Console.ReadLine();
 
@@ -58,6 +59,9 @@ namespace Insurance_Console
                         AddNewClaimItem();
                         break;
                     case "4":
+                        UpdateClaimItem();
+                        break;
+                    case "5":
                         continueToRun = false;
                         break;
                     default:
@@ -68,6 +72,128 @@ namespace Insurance_Console
                         break;
                 }
             }
+        }
+
+        private void UpdateClaimItem()
+        {
+            Console.Clear();
+
+            ShowAllClaims();
+
+            Console.WriteLine("\nEnter the claim id to update: ");
+
+            string input = Console.ReadLine();
+
+            Console.Clear();
+
+            Claim newClaim = new Claim();
+
+            newClaim.ClaimID = input;
+
+            Console.WriteLine("Enter the claim type (Car, Home, Theft): ");
+            string claimTypeInput = Console.ReadLine();
+            if (claimTypeInput.ToLower() == "car")
+            {
+                newClaim.TypeOfClaim = ClaimType.Car;
+
+            }
+            else if (claimTypeInput.ToLower() == "home")
+            {
+                newClaim.TypeOfClaim = ClaimType.Home;
+
+            }
+            else if (claimTypeInput.ToLower() == "theft")
+            {
+                newClaim.TypeOfClaim = ClaimType.Theft;
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid claim type.");
+                Console.WriteLine("Press any key to continue to menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Enter a claim description: ");
+            newClaim.ClaimDescription = Console.ReadLine();
+
+            Console.WriteLine("Amount of Damage:");
+
+            decimal amountInput = 0;
+
+            if (decimal.TryParse(Console.ReadLine(), out amountInput))
+            {
+                newClaim.ClaimAmount = amountInput;
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount input");
+                Console.WriteLine("Press any key to continue to menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Date Of Accident (yyyy/mm/dd): ");
+            DateTime dateOfIncident;
+
+            if (DateTime.TryParse(Console.ReadLine(), out dateOfIncident))
+            {
+                newClaim.DateOfIncident = dateOfIncident;
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid datetime input");
+                Console.WriteLine("Press any key to continue to menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Date of Claim (yyyy/mm/dd): ");
+            DateTime dateOfClaim;
+
+            if (DateTime.TryParse(Console.ReadLine(), out dateOfClaim))
+            {
+                newClaim.DateOfClaim = dateOfClaim;
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid datetime input");
+                Console.WriteLine("Press any key to continue to menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            int totalDays = Convert.ToInt32((newClaim.DateOfClaim - newClaim.DateOfIncident).TotalDays);
+
+            if (totalDays > 30)
+            {
+                newClaim.IsValid = false;
+                Console.WriteLine("This claim is not valid.");
+            }
+            else
+            {
+                newClaim.IsValid = true;
+                Console.WriteLine("This claim is valid.");
+            }
+
+            bool claimItemWasUpdated = _repo.UpdateExitingClaimItem(input, newClaim);
+            if (claimItemWasUpdated)
+            {
+                Console.WriteLine("The menu item was updated successfuly");
+            }
+            else
+            {
+                Console.WriteLine("The menu item was not updated successfuly");
+            }
+
+            Console.WriteLine("Press any key to continue to the menu");
+            Console.ReadKey();
+
+
         }
 
         public void ShowAllClaims()
@@ -102,23 +228,23 @@ namespace Insurance_Console
 
             Queue<Claim> claimList = _repo.GetTheClaims();
 
-            if(claimList.Count > 0)
+            if (claimList.Count > 0)
             {
                 Console.WriteLine("Here are the details for the next claim to be handled:\n");
-                
+
                 DisplayClaim(claimList.Peek());
 
                 Console.WriteLine("Do you want to deal with this claim now(y/n)?");
                 string input = Console.ReadLine().ToLower();
 
-                if(input == "y")
+                if (input == "y")
                 {
                     _repo.DeleteClaimItem();
 
                     Console.WriteLine("\nClaim handled successfuly. \nPress any key to continue to menu.");
                     Console.ReadLine();
                 }
-                else if(input == "n")
+                else if (input == "n")
                 {
                     Console.WriteLine("\nNo claim was handled. \nPress any key to continue to menu.");
                     Console.ReadLine();
@@ -151,7 +277,7 @@ namespace Insurance_Console
 
             Console.WriteLine("Enter the claim type (Car, Home, Theft): ");
             string claimTypeInput = Console.ReadLine();
-            if(claimTypeInput.ToLower() == "car")
+            if (claimTypeInput.ToLower() == "car")
             {
                 newClaim.TypeOfClaim = ClaimType.Car;
 
@@ -176,12 +302,12 @@ namespace Insurance_Console
 
             Console.WriteLine("Enter a claim description: ");
             newClaim.ClaimDescription = Console.ReadLine();
-            
+
             Console.WriteLine("Amount of Damage:");
 
             decimal amountInput = 0;
 
-            if(decimal.TryParse(Console.ReadLine(), out amountInput))
+            if (decimal.TryParse(Console.ReadLine(), out amountInput))
             {
                 newClaim.ClaimAmount = amountInput;
 
@@ -197,7 +323,7 @@ namespace Insurance_Console
             Console.WriteLine("Date Of Accident (yyyy/mm/dd): ");
             DateTime dateOfIncident;
 
-            if(DateTime.TryParse(Console.ReadLine(), out dateOfIncident))
+            if (DateTime.TryParse(Console.ReadLine(), out dateOfIncident))
             {
                 newClaim.DateOfIncident = dateOfIncident;
 
@@ -228,7 +354,7 @@ namespace Insurance_Console
 
 
             int totalDays = Convert.ToInt32((newClaim.DateOfClaim - newClaim.DateOfIncident).TotalDays);
-            
+
             if (totalDays > 30)
             {
                 newClaim.IsValid = false;
@@ -242,7 +368,7 @@ namespace Insurance_Console
 
             bool itemWasAdded = _repo.AddItemToTheClaims(newClaim);
 
-            if(itemWasAdded)
+            if (itemWasAdded)
             {
                 Console.WriteLine("New claim is added.");
                 Console.WriteLine("Press any key to continue to menu.");

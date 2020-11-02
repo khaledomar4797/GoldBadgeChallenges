@@ -42,7 +42,8 @@ namespace Badge_Console
                     "1. Add a badge\n" +
                     "2. Edit a badge\n" +
                     "3. List all Badges\n" +
-                    "4. Exit");
+                    "4. Remove a badge\n" +
+                    "5. Exit");
 
                 string input = Console.ReadLine();
 
@@ -60,6 +61,9 @@ namespace Badge_Console
                         Console.ReadKey();
                         break;
                     case "4":
+                        RemoveBadge();
+                        break;
+                    case "5":
                         continueToRun = false;
                         break;
                     default:
@@ -69,6 +73,53 @@ namespace Badge_Console
                         Console.ReadKey();
                         break;
                 }
+            }
+        }
+
+        private void RemoveBadge()
+        {
+            Console.Clear();
+
+            ListAllBadges();
+
+            Console.WriteLine("\nEnter the badge id to remove: ");
+
+            int input = 0;
+
+            if (int.TryParse(Console.ReadLine(), out input))
+            {
+                Console.Clear();
+
+                Badge badge = new Badge();
+                badge.BadgeID = input;
+
+                if (badge != null)
+                {
+                    bool ItemWasDeleted = _repo.DeleteABadge(badge);
+                    if (ItemWasDeleted)
+                    {
+                        Console.WriteLine("The badge item was deleted successfuly");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The badge item was not deleted successfuly");
+                    }
+
+                    Console.WriteLine("Press any key to continue to the menu");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("There is no badge item with this badge id");
+                    Console.WriteLine("Press any key to continue to the menu");
+                    Console.ReadKey();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input!");
+                Console.WriteLine("Press any key to continue to the menu");
+                Console.ReadKey();
             }
         }
 

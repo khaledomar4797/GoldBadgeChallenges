@@ -98,6 +98,7 @@ namespace Cafe_Console
                     else
                     {
                         Console.WriteLine("The menu item was not deleted successfuly");
+                        return;
                     }
 
                     Console.WriteLine("Press any key to continue to the menu");
@@ -158,6 +159,7 @@ namespace Cafe_Console
                     else
                     {
                         Console.WriteLine("Price should be decimal numbers.");
+                        return;
                     }
 
                     bool menuItemWasUpdated = _repo.UpdateExitingMenuItem(input, newMenu);
@@ -168,6 +170,7 @@ namespace Cafe_Console
                     else
                     {
                         Console.WriteLine("The menu item was not updated successfuly");
+                        return;
                     }
 
                     Console.WriteLine("Press any key to continue to the menu");
@@ -215,6 +218,7 @@ namespace Cafe_Console
             else
             {
                 Console.WriteLine("Price should be decimal numbers.");
+                return;
             }
 
             bool menuItemWasAdded = _repo.AddItemToTheMenu(newMenu);
